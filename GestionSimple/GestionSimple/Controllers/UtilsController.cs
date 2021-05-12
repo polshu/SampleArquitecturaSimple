@@ -10,6 +10,7 @@ using GestionSimple.Models;
 using GestionSimple.ModelsDTO;
 using GestionSimple.Services;
 using GestionSimple.Mappers;
+using GestionSimple.Utils;
 
 namespace GestionSimple.Controllers {
     public class UtilsController : ApiController {
@@ -29,8 +30,8 @@ namespace GestionSimple.Controllers {
         [HttpGet]
         [Route("api/v1/utils/fecha")]
         public IHttpActionResult GetFecha() {
-            IHttpActionResult respuesta;
-            DateTime dtmFechaActual;
+            IHttpActionResult   respuesta;
+            DateTime            dtmFechaActual;
 
             dtmFechaActual = DateTime.Now;
             respuesta = Ok(dtmFechaActual);
@@ -41,8 +42,8 @@ namespace GestionSimple.Controllers {
         [HttpGet]
         [Route("api/v1/utils/saludo")]
         public IHttpActionResult GetSaludo(string nombre) {
-            IHttpActionResult respuesta;
-            string strTexto;
+            IHttpActionResult   respuesta;
+            string              strTexto;
 
             strTexto = "Hola Queridisimo: " + nombre;
             respuesta = Ok(strTexto);
@@ -54,8 +55,8 @@ namespace GestionSimple.Controllers {
         [HttpGet]
         [Route("api/v1/utils/dividir")]
         public IHttpActionResult GetDividir(int dividendo, int divisor) {
-            IHttpActionResult respuesta;
-            int intCociente;
+            IHttpActionResult   respuesta;
+            int                 intCociente;
             // 125 / 5 = 25 y resto 0
             // 125  es el dividendo
             // 5    es el divisor
@@ -71,8 +72,9 @@ namespace GestionSimple.Controllers {
         [HttpGet]
         [Route("api/v1/utils/dividirconchequeo")]
         public IHttpActionResult GetDividirConChequeoDeErrores(int dividendo, int divisor) {
-            IHttpActionResult respuesta;
-            int intCociente;
+            IHttpActionResult   respuesta;
+            string              strError;
+            int                 intCociente;
 
             //if (divisor == 0) {
             //    BadRequest("El divisor no puede ser cero");
@@ -82,7 +84,11 @@ namespace GestionSimple.Controllers {
                 intCociente = dividendo / divisor;
                 respuesta = Ok(intCociente);
             }catch(Exception ex) {
-                respuesta = BadRequest("Error");
+                strError = string.Format("Error en la division de {0}/{1}", dividendo, divisor);
+                respuesta = BadRequest(strError);
+
+                // Grabo en el LOG de errores para pder ver que paso!
+                CustomLog.LogException(ex);
             }
 
             return respuesta;
@@ -113,6 +119,9 @@ namespace GestionSimple.Controllers {
                     respuesta = Ok(intCociente);
                 } catch (Exception ex) {
                     respuesta = InternalServerError();
+
+                    // Grabo en el LOG de errores para pder ver que paso!
+                    CustomLog.LogException(ex);
                 }
             }
 

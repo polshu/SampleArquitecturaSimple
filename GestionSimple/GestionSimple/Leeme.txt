@@ -21,7 +21,7 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 
 3) Explicar que es una API y basicamente como funciona.
 	http://localhost:64164/api/v1/utils/version
-	http://localhost:64164api/v1/utils/fecha
+	http://localhost:64164/api/v1/utils/fecha
 	http://localhost:64164/api/v1/utils/saludo?nombre=pepe				(key=value)
 	http://localhost:64164/api/v1/utils/saludo?nombrecito=pepe			EXPLOTA!!!! (por que?)
 	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=5	(mas de un parametro GET se separan con &)
