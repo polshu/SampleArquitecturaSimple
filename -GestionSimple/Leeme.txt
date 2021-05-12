@@ -1,0 +1,18 @@
+﻿Ejemplo de API Prueba, con el objetivo de poder 
+
+
+
+Update-Package -reinstall
+Unable to uninstall 'Newtonsoft.Json.13.0.1' because 'Microsoft.AspNet.WebApi.Client.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.Client.5.2.7' because 'Microsoft.AspNet.WebApi.Core.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.Core.5.2.7' because 'Microsoft.AspNet.WebApi.WebHost.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.WebHost.5.2.7' because 'Microsoft.AspNet.WebApi.5.2.7' depends on it.
+
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+
+Microsoft.AspNet.WebApi.Client.5.2.7
+Microsoft.AspNet.WebApi.Core.5.2.7
+Microsoft.AspNet.WebApi.WebHost.5.2.7
+
+Microsoft.AspNet.WebApi
+Newtonsoft.Json.13.0.1

@@ -1,0 +1,55 @@
+﻿Ejemplo de API Prueba de creacion de una API en ASP.Net / C# / SQL Server con Stored Procedures, con el objetivo 
+de poder desarrollar una API un poco mas robusta, con control de errores y reutilizando codigo.
+
+1) Ver la estructura de la base de datos (2 tables) y foreign key (hay NULLS).
+	Hacer SELECT de las Tablas:
+		SELECT * FROM Personas
+		SELECT * FROM Provincias
+	Ver (script) y luego ejecutar los Stored Procedures:
+		Personas_GetAll
+		Personas_GetByActivo 1
+		Personas_GetByActivo 0
+		Personas_GetById 10
+		Personas_Insert	'Guillermo Wonka', 'Willy@hotmail.com', 5, 1
+		Personas_InsertScalar 'Guillermo Wonka', 'Willy@hotmail.com', 5, 1
+
+2) Ver el Modelo (Models) como se mapean los campos con los atributos.
+	Tabla Personas --> Models.Persona
+	Comentar que hacen estas sentencias y que es un operador ternario (if ? then : else)
+		(Activo ? "True" : "False")
+		((IdProvincia != null) ? IdProvincia.ToString() : "NULL"),
+
+3) Explicar que es una API y basicamente como funciona.
+	http://localhost:64164/api/v1/utils/version
+	http://localhost:64164api/v1/utils/fecha
+	http://localhost:64164/api/v1/utils/saludo?nombre=pepe				(key=value)
+	http://localhost:64164/api/v1/utils/saludo?nombrecito=pepe			EXPLOTA!!!! (por que?)
+	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=5	(mas de un parametro GET se separan con &)
+	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=5
+	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=0	EXPLOTA!!!! (por que?)
+
+	http://localhost:64164/api/v1/utils/dividirconchequeo?dividendo=10&divisor=5	
+	http://localhost:64164/api/v1/utils/dividirconchequeo?dividendo=10&divisor=0	(se ve el error y retorna 400 Bad Request)
+
+
+	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=5	
+	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=20	(se ve el error y retorna 400 Bad Request)
+	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=0	(se ve el error y retorna 400 Bad Request)
+4) Explicar que es el POSTMAN y como funciona.
+
+
+
+Update-Package -reinstall
+Unable to uninstall 'Newtonsoft.Json.13.0.1' because 'Microsoft.AspNet.WebApi.Client.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.Client.5.2.7' because 'Microsoft.AspNet.WebApi.Core.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.Core.5.2.7' because 'Microsoft.AspNet.WebApi.WebHost.5.2.7' depends on it.
+Unable to uninstall 'Microsoft.AspNet.WebApi.WebHost.5.2.7' because 'Microsoft.AspNet.WebApi.5.2.7' depends on it.
+
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+
+Microsoft.AspNet.WebApi.Client.5.2.7
+Microsoft.AspNet.WebApi.Core.5.2.7
+Microsoft.AspNet.WebApi.WebHost.5.2.7
+
+Microsoft.AspNet.WebApi
+Newtonsoft.Json.13.0.1
