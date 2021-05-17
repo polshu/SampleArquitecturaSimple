@@ -36,6 +36,13 @@ namespace GestionSimple.Controllers {
             dtmFechaActual = DateTime.Now;
             respuesta = Ok(dtmFechaActual);
 
+            try {
+                int dividendo = 0;
+                int i = 1 / dividendo;
+            }catch(Exception ex) {
+                CustomLog.LogException(ex);
+            }
+
             return respuesta;
         }
 

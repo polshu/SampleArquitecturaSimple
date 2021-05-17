@@ -24,6 +24,7 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 	http://localhost:64164/api/v1/utils/fecha
 	http://localhost:64164/api/v1/utils/saludo?nombre=pepe				(key=value)
 	http://localhost:64164/api/v1/utils/saludo?nombrecito=pepe			EXPLOTA!!!! (por que?)
+
 	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=5	(mas de un parametro GET se separan con &)
 	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=5
 	http://localhost:64164/api/v1/utils/dividir?dividendo=10&divisor=0	EXPLOTA!!!! (por que?)
@@ -31,10 +32,10 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 	http://localhost:64164/api/v1/utils/dividirconchequeo?dividendo=10&divisor=5	
 	http://localhost:64164/api/v1/utils/dividirconchequeo?dividendo=10&divisor=0	(se ve el error y retorna 400 Bad Request)
 
-
 	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=5	
-	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=20	(se ve el error y retorna 400 Bad Request)
-	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=0	(se ve el error y retorna 400 Bad Request)
+	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=20		(se ve el error y retorna 400 Bad Request)
+	http://localhost:64164/api/v1/utils/dividircompleto?dividendo=10&divisor=0		(se ve el error y retorna 400 Bad Request)
+
 4) Explicar que es el POSTMAN y como funciona.
 
 

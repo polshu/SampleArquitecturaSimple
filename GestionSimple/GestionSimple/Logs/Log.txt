@@ -1,2 +1,8 @@
 2020/08/08 21:41:08.721 Could not find stored procedure 'Usuarios_GetByUserNamePassword'.
 2020/08/08 21:43:24.101 Could not find stored procedure 'Usuarios_GetByUserNamePassword'.
+2021/05/14 09:10:03.445 Specified cast is not valid.
+2021/05/14 09:10:38.253 Specified cast is not valid.
+2021/05/14 09:28:49.245 Attempted to divide by zero.
+2021/05/14 09:29:25.648 Specified cast is not valid.
+2021/05/14 09:29:42.138 Specified cast is not valid.
+2021/05/14 09:30:07.761 Specified cast is not valid.
