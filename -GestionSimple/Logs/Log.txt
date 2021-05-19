@@ -1,2 +1,0 @@
-2020/08/08 21:41:08.721 Could not find stored procedure 'Usuarios_GetByUserNamePassword'.
-2020/08/08 21:43:24.101 Could not find stored procedure 'Usuarios_GetByUserNamePassword'.
