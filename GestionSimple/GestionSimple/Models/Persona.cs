@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace GestionSimple.Models {
 
         public string Email { get; set; }
 
-        public int? IdProvincia { get; set; }
+        public int IdProvincia { get; set; }
 
         public bool Activo { get; set; }
 
@@ -22,7 +23,7 @@ namespace GestionSimple.Models {
                     Id,
                     Nombre,
                     Email,
-                    ((IdProvincia != null) ? IdProvincia.ToString() : "NULL"),
+                    IdProvincia,
                     (Activo ? "True" : "False")
                 );
             return strReturnValue;
@@ -34,7 +35,7 @@ namespace GestionSimple.Models {
          *  Propiedades extendidas (JOINS)
          * 
          */
-
+        //[IgnoreDataMember()]
         public string Provincia { get; set; }
 
         public string ToStringExtended() {

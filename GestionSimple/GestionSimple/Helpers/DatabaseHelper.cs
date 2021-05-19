@@ -231,5 +231,20 @@ namespace GestionSimple.Helpers {
             }
             return returnObject;
         }
+
+
+        #region GetValueOrDefaultIfNull
+        public static string GetValueOrDefaultIfNull(SqlDataReader currentReader, string strColumnaName, string strValueIfNull) {
+            return ((currentReader[strColumnaName] != DBNull.Value) ? (string)currentReader[strColumnaName] : strValueIfNull);
+        }
+
+        public static int GetValueOrDefaultIfNull(SqlDataReader currentReader, string strColumnaName, int intValueIfNull) {
+            return ((currentReader[strColumnaName] != DBNull.Value) ? (int)currentReader[strColumnaName] : intValueIfNull);
+        }
+
+        public static bool GetValueOrDefaultIfNull(SqlDataReader currentReader, string strColumnaName, bool blnValueIfNull) {
+            return ((currentReader[strColumnaName] != DBNull.Value) ? (bool)currentReader[strColumnaName] : blnValueIfNull);
+        }
+        #endregion
     }
 }

@@ -22,14 +22,19 @@ namespace GestionSimple.Utils {
 
         #region LogException
         public static bool LogException(Exception ex) {
-            bool blnReturnValue = false;
+            bool    blnReturnValue      = false;
+            string  strInnerException   = "";
 
-            blnReturnValue = LogException(ex.Message);
+            if (ex.StackTrace != null) {
+                strInnerException = Environment.NewLine + ex.StackTrace;
+            }
+
+            blnReturnValue = LogLine(ex.Message + strInnerException);
 
             return blnReturnValue;
         }
 
-        public static bool LogException(string strData) {
+        public static bool LogLine(string strData) {
             bool    blnReturnValue = false;
             string  strPathFile;
             string  strTextToLog;

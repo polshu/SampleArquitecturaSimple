@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "ef79b36f-2ea5-4411-b0bc-2d074c43311e",
+		"name": "DAI 2021 - API Gestion Simple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UtilsController",
+			"item": [
+				{
+					"name": "version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/version",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/fecha",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"fecha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saludo (nombre)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/saludo?nombre=polshetta",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"saludo"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "polshetta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dividir (dividendo, divisor)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/dividir?dividendo=25&divisor=5",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"dividir"
+							],
+							"query": [
+								{
+									"key": "dividendo",
+									"value": "25"
+								},
+								{
+									"key": "divisor",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dividirconchequeo (dividendo, divisor) Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/dividirconchequeo?dividendo=25&divisor=5",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"dividirconchequeo"
+							],
+							"query": [
+								{
+									"key": "dividendo",
+									"value": "25"
+								},
+								{
+									"key": "divisor",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dividircompleto (dividendo, divisor) Copy 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/utils/dividircompleto?dividendo=25&divisor=5",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"utils",
+								"dividircompleto"
+							],
+							"query": [
+								{
+									"key": "dividendo",
+									"value": "25"
+								},
+								{
+									"key": "divisor",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PersonasController",
+			"item": [
+				{
+					"name": "GetById (id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/personas/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"personas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/personas/",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"personas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllExtended",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/personasextended/",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"personasextended",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"Id\": 1,\r\n        \"Nombre\": \"Cacho castania\",\r\n        \"Email\": \"cachito@gmail.com\",\r\n        \"IdProvincia\": 5,\r\n        \"Activo\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{domain}}:{{port}}/api/v1/personas/?Accept=application/json&Content-Type=application/json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"personas",
+								""
+							],
+							"query": [
+								{
+									"key": "Accept",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

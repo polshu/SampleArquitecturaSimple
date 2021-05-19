@@ -58,7 +58,6 @@ namespace GestionSimple.Controllers {
             return respuesta;
         }
 
-
         [HttpGet]
         [Route("api/v1/utils/dividir")]
         public IHttpActionResult GetDividir(int dividendo, int divisor) {
@@ -135,8 +134,6 @@ namespace GestionSimple.Controllers {
 
             return respuesta;
         }
-
-
 
     }
 }

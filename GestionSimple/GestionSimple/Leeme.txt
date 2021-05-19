@@ -17,7 +17,6 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 	Tabla Personas --> Models.Persona
 	Comentar que hacen estas sentencias y que es un operador ternario (if ? then : else)
 		(Activo ? "True" : "False")
-		((IdProvincia != null) ? IdProvincia.ToString() : "NULL"),
 
 3) Explicar que es una API y basicamente como funciona.
 	http://localhost:64164/api/v1/utils/version
@@ -38,6 +37,14 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 
 4) Explicar que es el POSTMAN y como funciona.
 
+
+5) Explicar como se pueden obtener los JOINS y retornarlos
+	.- [IgnoreDataMember()] y modificaciones en el Modelo.
+	.- Stored Procedures con JOINS (Extended)
+	.- api/v1/personasextended
+	.- DataReaderToObject (extended)
+	.- Explicar el codigo repetido en DataReaderToObject --> "GetValueOrDefaultIfNull" 
+	.- Equivocarse en un parametro, nombre de Stored Procedure o Columna y ver el LOG!
 
 
 Update-Package -reinstall

@@ -58,6 +58,28 @@ namespace GestionSimple.Services {
             return returnList;
         }
 
+        public static List<Persona> GetAll(bool blnExtended) {
+            List<Persona>   returnList      = new List<Persona>();
+            Persona         currentEntity;
+            SqlDataReader   currentReader   = null;
+
+            try {
+                currentReader = DatabaseHelper.ExecuteReader("Personas_GetAll" + (blnExtended ? "_Extended" : ""), null);
+                if (currentReader.HasRows) {
+                    while (currentReader.Read()) {
+                        currentEntity = DataReaderToObject(currentReader, blnExtended);
+                        returnList.Add(currentEntity);
+                    }
+                }
+            } catch (Exception ex) {
+                CustomLog.LogException(ex);
+            }
+
+            DatabaseHelper.CloseAndDisposeReader(ref currentReader);
+
+            return returnList;
+        }
+
         public static List<Persona> GetActivos() {
             return GetByActivo(true);
         }
@@ -96,12 +118,13 @@ namespace GestionSimple.Services {
 
         public static int Insert(Persona newEntity) {
             List<Persona>   returnList = new List<Persona>();
-            SqlParameter[]  parameterArray = new SqlParameter[3];
+            SqlParameter[]  parameterArray = new SqlParameter[4];
             int             intRecordsAffected = 0;
 
-            parameterArray[0] = new SqlParameter("@strNombre"   , newEntity.Nombre);
-            parameterArray[1] = new SqlParameter("@strEmail"    , newEntity.Email);
-            parameterArray[2] = new SqlParameter("@blnActivo"   , newEntity.Activo);
+            parameterArray[0] = new SqlParameter("@strNombre"       , newEntity.Nombre);
+            parameterArray[1] = new SqlParameter("@strEmail"        , newEntity.Email);
+            parameterArray[2] = new SqlParameter("@intIdProvincia"  , newEntity.IdProvincia);
+            parameterArray[3] = new SqlParameter("@blnActivo"       , newEntity.Activo);
 
             try {
                 intRecordsAffected = DatabaseHelper.ExecuteNonQuery("Personas_Insert", parameterArray);
@@ -114,13 +137,14 @@ namespace GestionSimple.Services {
 
         public static int InsertScalar(Persona newEntity) {
             List<Persona>   returnList = new List<Persona>();
-            SqlParameter[]  parameterArray = new SqlParameter[3];
+            SqlParameter[]  parameterArray = new SqlParameter[4];
             int             intNewId = 0;
             object          currentObject;
 
-            parameterArray[0] = new SqlParameter("@strNombre", newEntity.Nombre);
-            parameterArray[1] = new SqlParameter("@strEmail", newEntity.Email);
-            parameterArray[2] = new SqlParameter("@blnActivo", newEntity.Activo);
+            parameterArray[0] = new SqlParameter("@strNombre"       , newEntity.Nombre);
+            parameterArray[1] = new SqlParameter("@strEmail"        , newEntity.Email);
+            parameterArray[2] = new SqlParameter("@intIdProvincia"  , newEntity.IdProvincia);
+            parameterArray[3] = new SqlParameter("@blnActivo"       , newEntity.Activo);
 
             try {
                 currentObject = DatabaseHelper.ExecuteScalar("Personas_InsertScalar", parameterArray);
@@ -174,10 +198,47 @@ namespace GestionSimple.Services {
                 returnEntity.Id             = ((currentReader["Id"] != DBNull.Value)            ? (int)currentReader["Id"] : 0);
                 returnEntity.Nombre         = ((currentReader["Nombre"] != DBNull.Value)        ? (string)currentReader["Nombre"] : "");
                 returnEntity.Email          = ((currentReader["Email"] != DBNull.Value)         ? (string)currentReader["Email"] : "");
-                returnEntity.IdProvincia    = ((currentReader["IdProvincia"] != DBNull.Value)   ? (int?)currentReader["Email"] : null);
+                returnEntity.IdProvincia    = ((currentReader["IdProvincia"] != DBNull.Value)   ? (int)currentReader["IdProvincia"] : 0);
                 returnEntity.Activo         = ((currentReader["Activo"] != DBNull.Value)        ? (bool)currentReader["Activo"] : false);
             }
 
+            return returnEntity;
+        }
+        #endregion
+
+        #region Metodos Utiles de la Clase (Extended)
+        private static Persona DataReaderToObject(SqlDataReader currentReader, bool blnExtended) {
+            Persona returnEntity = null;
+
+            if (currentReader != null) {
+                returnEntity = new Persona();
+                returnEntity.Id             = ((currentReader["Id"] != DBNull.Value)            ? (int)currentReader["Id"] : 0);
+                returnEntity.Nombre         = ((currentReader["Nombre"] != DBNull.Value)        ? (string)currentReader["Nombre"] : "");
+                returnEntity.Email          = ((currentReader["Email"] != DBNull.Value)         ? (string)currentReader["Email"] : "");
+                returnEntity.IdProvincia    = ((currentReader["IdProvincia"] != DBNull.Value)   ? (int)currentReader["IdProvincia"] : 0);
+                returnEntity.Activo         = ((currentReader["Activo"] != DBNull.Value)        ? (bool)currentReader["Activo"] : false);
+
+                /*
+                returnEntity.Id             = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "Id"          , 0);
+                returnEntity.Nombre         = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "Nombre"      , "");
+                returnEntity.Email          = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "Email"       , "");
+                returnEntity.IdProvincia    = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "IdProvincia" , 0);
+                returnEntity.Activo         = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "Activo"      , false);
+                */
+
+                if (blnExtended) {
+                    returnEntity = DataReaderToObjectExtended(currentReader, returnEntity);
+                }
+            }
+
+            return returnEntity;
+        }
+
+        private static Persona DataReaderToObjectExtended(SqlDataReader currentReader, Persona returnEntity) {
+            if ((currentReader != null) && (returnEntity!=null)){
+                returnEntity.Provincia = ((currentReader["Provincias_Nombre"] != DBNull.Value)   ? (string)currentReader["Provincias_Nombre"] : "");
+                //returnEntity.Provincia = DatabaseHelper.GetValueOrDefaultIfNull(currentReader, "Provincias_Nombre", false);
+            }
             return returnEntity;
         }
         #endregion

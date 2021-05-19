@@ -84,7 +84,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\UtilsController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
