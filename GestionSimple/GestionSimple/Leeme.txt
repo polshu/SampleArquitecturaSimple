@@ -1,4 +1,5 @@
-﻿Ejemplo de API Prueba de creacion de una API en ASP.Net / C# / SQL Server con Stored Procedures, con el objetivo 
+﻿https://github.com/polshu/SampleArquitecturaSimple.git
+Ejemplo de API Prueba de creacion de una API en ASP.Net / C# / SQL Server con Stored Procedures, con el objetivo 
 de poder desarrollar una API un poco mas robusta, con control de errores y reutilizando codigo.
 
 1) Ver la estructura de la base de datos (2 tables) y foreign key (hay NULLS).
@@ -45,6 +46,9 @@ de poder desarrollar una API un poco mas robusta, con control de errores y reuti
 	.- DataReaderToObject (extended)
 	.- Explicar el codigo repetido en DataReaderToObject --> "GetValueOrDefaultIfNull" 
 	.- Equivocarse en un parametro, nombre de Stored Procedure o Columna y ver el LOG!
+
+
+
 
 
 Update-Package -reinstall
